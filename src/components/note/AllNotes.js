@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { removeNote } from "../../redux/actions/note";
 import { Typography, Button, Grid } from "@material-ui/core";
+import { fontFamily } from "@material-ui/system";
 
 class AllNotes extends Component {
   removeNote = index => {
@@ -10,25 +11,29 @@ class AllNotes extends Component {
 
   render() {
     const notesItems = this.props.notes.map((note, index) => (
-      <li key={index}>
-        <Grid container wrap="nowrap" spacing={2}>
-          <Grid item>
-            <Typography variant="h6" gutterBottom>
-              {note.title}
-            </Typography>
-          </Grid>
-          <Grid item xs zeroMinWidth>
-            <span>{note.content}</span>
-            <Button
-              variant="contained"
-              color="secondary"
-              onClick={() => this.removeNote(index)}
-            >
-              Delete
-            </Button>
-          </Grid>
+      <Grid
+        item
+        wrap="nowrap"
+        spacing={10}
+        key={index}
+        style={{ fontFamily: "fantasy" }}
+      >
+        <Grid item>
+          <Typography variant="h6" gutterBottom>
+            {note.title}
+          </Typography>
         </Grid>
-      </li>
+        <Grid item xs zeroMinWidth>
+          <span>{note.content}</span>
+        </Grid>
+        <Button
+            variant="contained"
+            color="secondary"
+            onClick={() => this.removeNote(index)}
+          >
+            Delete
+          </Button>
+      </Grid>
     ));
 
     return (
@@ -37,7 +42,9 @@ class AllNotes extends Component {
           All Notes
         </Typography>
 
-        <ul>{notesItems}</ul>
+        <Grid container spacing={2}>
+          {notesItems}
+        </Grid>
       </React.Fragment>
     );
   }

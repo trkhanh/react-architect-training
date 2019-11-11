@@ -9,7 +9,7 @@ import {
   FormHelperText,
   Button
 } from "@material-ui/core";
-import { TextareaAutosize } from "@material-ui/core";
+import { TextareaAutosize, TextField } from "@material-ui/core";
 
 class NotesForm extends Component {
   constructor(props) {
@@ -37,8 +37,8 @@ class NotesForm extends Component {
   render() {
     return (
       <React.Fragment>
-        <Typography variant="h2" component="h3">
-          Add note
+        <Typography variant="h2" component="h5">
+          ETON
         </Typography>
 
         <form onSubmit={this.handleSubmission}>
@@ -55,8 +55,13 @@ class NotesForm extends Component {
             Please add your note.
           </FormHelperText>
 
-          <TextareaAutosize
-            rowsMax={4}
+          <TextField
+            id="outlined-textarea"
+            label="Note content"
+            placeholder="Placeholder"
+            multiline
+            margin="normal"
+            variant="outlined"
             name="content"
             value={this.state.content}
             onChange={this.handleChange}
