@@ -11,13 +11,7 @@ class AllNotes extends Component {
 
   render() {
     const notesItems = this.props.notes.map((note, index) => (
-      <Grid
-        item
-        wrap="nowrap"
-        spacing={10}
-        key={index}
-        style={{ fontFamily: "fantasy" }}
-      >
+      <Grid item key={index} style={{ fontFamily: "fantasy" }}>
         <Grid item>
           <Typography variant="h6" gutterBottom>
             {note.title}
@@ -27,12 +21,12 @@ class AllNotes extends Component {
           <span>{note.content}</span>
         </Grid>
         <Button
-            variant="contained"
-            color="secondary"
-            onClick={() => this.removeNote(index)}
-          >
-            Delete
-          </Button>
+          variant="contained"
+          color="secondary"
+          onClick={() => this.removeNote(index)}
+        >
+          Delete
+        </Button>
       </Grid>
     ));
 
@@ -42,7 +36,7 @@ class AllNotes extends Component {
           All Notes
         </Typography>
 
-        <Grid container spacing={2}>
+        <Grid container spacing={2} wrap="nowrap">
           {notesItems}
         </Grid>
       </React.Fragment>
