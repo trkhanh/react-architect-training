@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { removeNote } from "../../redux/actions/note";
 import { Typography, Button, Grid } from "@material-ui/core";
-import { fontFamily } from "@material-ui/system";
 
 class AllNotes extends Component {
   removeNote = index => {
@@ -50,11 +49,11 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProprs = {
+const mapDispatchToProps = {
   removeNote: removeNote
 };
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProprs
+  mapDispatchToProps
 )(AllNotes);

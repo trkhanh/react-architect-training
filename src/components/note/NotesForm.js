@@ -1,20 +1,17 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addNote } from "../../redux/actions/note";
-import { Typography } from "@material-ui/core";
 import {
-  FormControl,
   InputLabel,
   Input,
-  FormHelperText,
-  Button
+  Button,
+  TextField,
+  Typography
 } from "@material-ui/core";
-import { TextareaAutosize, TextField } from "@material-ui/core";
 
 class NotesForm extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       title: "",
       content: ""
@@ -27,10 +24,15 @@ class NotesForm extends Component {
 
   handleSubmission = e => {
     e.preventDefault();
+    console.log("NotesForm this.state()", this.state);
+    debugger;
 
     let { title, content } = this.state;
     this.props.addNote(title, content);
+    this.clearAllTextFiled();
+  };
 
+  clearAllTextFiled = () => {
     this.setState({ title: "", content: "" });
   };
 
@@ -38,22 +40,19 @@ class NotesForm extends Component {
     return (
       <React.Fragment>
         <Typography variant="h2" component="h5">
-          ETON
+          REDUX-REACT
         </Typography>
+        <br />
 
         <form onSubmit={this.handleSubmission}>
           <InputLabel htmlFor="my-input">Note title</InputLabel>
           <Input
             id="my-input"
-            aria-describedby="my-helper-text"
             name="title"
             value={this.state.title}
             onChange={this.handleChange}
           />
           <br />
-          <FormHelperText id="my-helper-text">
-            Please add your note.
-          </FormHelperText>
 
           <TextField
             id="outlined-textarea"
@@ -76,9 +75,11 @@ class NotesForm extends Component {
   }
 }
 
+const mapDispatchToProps = {
+  addNote: addNote
+};
+
 export default connect(
   null,
-  {
-    addNote: addNote
-  }
+  mapDispatchToProps
 )(NotesForm);

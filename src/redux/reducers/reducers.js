@@ -7,7 +7,7 @@ const initialState = {
 function rootReducer(state = initialState, action) {
   switch (action.type) {
     case ADD_NOTE:
-      console.log("ADD_NOTE", { state, action });
+      console.log("ADD_NOTE Reducer---> ", { prevState: state, action });
       return {
         notes: [
           ...state.notes,
