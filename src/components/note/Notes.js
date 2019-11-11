@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import NotesForm from "./NotesForm";
 import AllNotes from "./AllNotes";
-import {Typography} from '@material-ui/core'
+import { Typography } from "@material-ui/core";
 
 export default class Notes extends Component {
   render() {
